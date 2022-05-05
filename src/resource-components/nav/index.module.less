@@ -1,0 +1,24 @@
+.nav {
+  display: flex;
+  background-color: var(--color-bg-4);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  box-shadow: 0 2px 5px 0 rgb(var(--gray-3));
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.nav_item {
+  text-decoration: none;
+  color: var(--color-text-1);
+  margin-right: 8px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
