@@ -12,7 +12,6 @@ import RCListRenderer from './components/rclist-renderer'
 import './App.css'
 
 import resourceDataJson from './resource-data.json' // 将配置文件 作为字符串引入。
-import fontListJson from './used-font-list.json'
 
 const App = () => {
   const [componentDataList, setList] = React.useState<ComponentDataList>([])
@@ -21,9 +20,7 @@ const App = () => {
     const resourceData = resourceDataJson as unknown as Resource
     const pageConfig = safeJsonParse<PageConfig>(resourceData?.config || '')
 
-    const fontList = fontListJson as FontList
-
-    console.log('configStr', 'config', resourceData, pageConfig, fontList)
+    console.log('configStr', 'config', resourceData, pageConfig)
 
     //
     if (pageConfig?.componentDataList) {
@@ -40,8 +37,9 @@ const App = () => {
       setColorVariableValue(pageConfig.globalConfig?.themeConfig)
     }
     // 恢复 字体
-    if (fontList) {
-      createFontStyleNode(fontList)
+    if (pageConfig?.globalConfig?.fontConfig?.usedFont) {
+      // TODO: 配合 font 存储进行 优化
+      // createFontStyleNode(fontList)
     }
     // 设置网页 title
     if (resourceData?.title) {
