@@ -18,34 +18,6 @@ export const devLogger = (...args: unknown[]) => {
   }
 }
 
-export const devTimer = {
-  time: (label?: string | undefined) => {
-    if (IS_DEV) {
-      console.time(`[devTimer] ${label}`)
-    }
-  },
-  timeLog: (label?: string | undefined, ...args: unknown[]) => {
-    if (IS_DEV) {
-      console.timeLog(`[devTimer] ${label}`, ...args)
-    }
-  },
-  timeEnd: (label?: string | undefined) => {
-    if (IS_DEV) {
-      console.timeEnd(`[devTimer] ${label}`)
-    }
-  },
-}
-
-export const safeJsonParse = <T = unknown>(str: string, defaultValue?: T) => {
-  try {
-    return JSON.parse(str) as T
-  } catch (err) {
-    devLogger('safeJsonParse failed err:', err)
-    console.warn('safeJsonParse failed err:', err)
-    return defaultValue
-  }
-}
-
 export const compose =
   <T = any>(...funs: Function[]) =>
   (...args: any[]) =>

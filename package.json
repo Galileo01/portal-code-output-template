@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-template",
+  "name": "portal-code-output-template",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -14,8 +14,7 @@
     "clsx": "^1.1.1",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "tinycolor2": "^1.4.2"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@arco-plugins/vite-react": "^1.1.0",
@@ -24,7 +23,6 @@
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
-    "@types/tinycolor2": "^1.4.3",
     "@vitejs/plugin-react": "^1.0.7",
     "commitlint": "^16.2.1",
     "eslint": "^8.10.0",

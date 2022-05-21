@@ -17,4 +17,14 @@ export const createFontStyleNode = (fontList: FontList) => {
   updateStyleNodeInnerHTML(FONT_STYLE_NODE_ID, innerHTML)
 }
 
-export default createFontStyleNode
+export const updateGlobalFont = (globalFont: string) => {
+  document.body.style.setProperty('font-family', globalFont)
+}
+
+export const updateFontConfigToDOM = (
+  globalFont: string | undefined,
+  usedFont: FontList
+) => {
+  if (usedFont.length > 0) createFontStyleNode(usedFont)
+  if (globalFont) updateGlobalFont(globalFont)
+}

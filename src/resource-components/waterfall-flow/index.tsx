@@ -4,7 +4,6 @@ import clsx from 'clsx'
 
 import { RCClassnameComputer } from '../utils'
 import styles from './index.module.less'
-import { devLogger } from '@/common/utils'
 
 export type WaterFallFlowProps = {
   flowConfig: {
@@ -36,7 +35,6 @@ const WaterFallFlow: React.FC<WaterFallFlowProps> = (props) => {
     ) as HTMLDivElement | null | undefined
 
     flowItemElement?.style.setProperty('grid-row', `auto / span ${span}`)
-    devLogger('setGridStyle', imgHeight, span)
   }
 
   const handleImgLoadGenerator: (
@@ -48,7 +46,6 @@ const WaterFallFlow: React.FC<WaterFallFlowProps> = (props) => {
   // column, containerWidth 更新从 重新计算span
 
   React.useEffect(() => {
-    devLogger('re compute')
     const imgElements = [
       ...(containerElementRef.current?.getElementsByClassName(`img_item`) ||
         []),
