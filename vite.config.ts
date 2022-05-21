@@ -4,8 +4,9 @@ import vitePluginForArco from '@arco-plugins/vite-react' // 自动导入 arco �
 
 const { resolve } = require('path')
 
-// https://vitejs.dev/config/
+// https://vitejs.dev/config/  vite build --base=/my/public/path/
 export default defineConfig({
+  base: './',
   plugins: [react(), vitePluginForArco()],
   resolve: {
     // 配置路径 别名

@@ -11,7 +11,6 @@ export type ComponentDataList = ComponentDataItem[]
 export type PageConfig = {
   // 页面(资源)标题
   title: string
-  edit_type: string
   // 全局配置
   globalConfig?: GlobalConfig
   // 组件列表

@@ -1,10 +1,11 @@
 {
-  "name": "vite-react-template",
+  "name": "portal-code-output-template",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "build:tsc": "tsc && vite build",
     "preview": "vite preview",
     "prepare": "husky install"
   },

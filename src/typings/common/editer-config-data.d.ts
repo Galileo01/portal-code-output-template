@@ -1,3 +1,5 @@
+import { FontList } from '@/typings/database'
+
 // 主题配置
 export type StringKeyValueObject = Record<string, string>
 
@@ -14,12 +16,10 @@ export type ColorVarMap = Record<
 export type ThemeConfigData = ColorVarValue
 
 // 字体配置
-export type FontFormData = {
-  globalFont: string[]
-  usedFont: string[][]
+export type FontFormField = {
+  globalFont: string
+  usedFont: FontList
 }
-
-export type FontConfigData = Partial<FontFormData>
 
 // 全局配置
 export type GlobalConfig = {
@@ -27,8 +27,8 @@ export type GlobalConfig = {
   themeConfig?: ThemeConfigData
   // 个性 调色板
   customPalette?: string[]
-  // 字体配置
-  fontConfig?: FontConfigData
+  // 字体配置  出码模板里 类型和portal 项目不一样
+  fontConfig?: FontFormField
 }
 
 // 样式 配置
