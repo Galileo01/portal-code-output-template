@@ -4,6 +4,7 @@ import { PageConfig, ComponentDataList } from '@/typings/common/editer'
 import { generateStyleNodeFromConfig } from '@/common/utils/style-config'
 import { setColorVariableValue } from '@/common/utils/color-variable'
 import { updateFontConfigToDOM } from '@/common/utils/font'
+import { generateElementFromMetaInfo } from '@/common/utils/meta-config'
 
 import RCListRenderer from './components/rclist-renderer'
 
@@ -18,25 +19,36 @@ const App = () => {
     // @ts-ignore
     const pageConfig = configDataJson as PageConfig
 
-    if (pageConfig?.componentDataList) {
-      setList(pageConfig?.componentDataList)
+    const {
+      styleConfig,
+      globalConfig,
+      componentDataList: listInFetch,
+    } = pageConfig
+
+    if (listInFetch) {
+      setList(listInFetch)
     }
 
     // 恢复 style node
-    if (pageConfig?.styleConfig) {
-      generateStyleNodeFromConfig(pageConfig.styleConfig)
+    if (styleConfig) {
+      generateStyleNodeFromConfig(styleConfig)
     }
 
     // 恢复主题配置
-    if (pageConfig?.globalConfig?.themeConfig) {
-      setColorVariableValue(pageConfig.globalConfig?.themeConfig)
+    if (globalConfig?.themeConfig) {
+      setColorVariableValue(globalConfig?.themeConfig)
     }
     // 恢复 字体
-    if (pageConfig?.globalConfig?.fontConfig) {
-      const { fontConfig } = pageConfig?.globalConfig || {}
-      // TODO: 配合 font 存储进行 优化
+    if (globalConfig?.fontConfig) {
+      const { fontConfig } = globalConfig || {}
       updateFontConfigToDOM(fontConfig?.globalFont, fontConfig?.usedFont || [])
     }
+
+    // 恢复元信息
+    if (globalConfig?.metaConfig) {
+      generateElementFromMetaInfo(globalConfig?.metaConfig)
+    }
+
     // 设置网页 title
     if (pageConfig.title) {
       document.title = pageConfig.title
